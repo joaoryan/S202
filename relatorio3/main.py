@@ -1,16 +1,32 @@
-# This is a sample Python script.
+from db.pokedex import Pokedex
+from helper.WriteAJson import writeAJson
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+pokedex = Pokedex()
+
+pokemons = pokedex.getPokemonByName("Pikachu")
+print("Name:")
+print(pokemons)
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+writeAJson(pokemons, "Pikachu")
 
+pokemons = pokedex.getPokemonsByWeaknesses(["Fire", "Rock"])
+print("Weaknesses:")
+print(pokemons)
+writeAJson(pokemons, "Weaknesses")
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+pokemons = pokedex.getPokemonsByType(["Bug", "Flying"])
+print("Types:")
+print(pokemons)
+writeAJson(pokemons, "Types")
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+pokemons = pokedex.getPokemonsByFire()
+print("Fire:")
+print(pokemons)
+writeAJson(pokemons, "Fire")
+
+pokemons = pokedex.getPokemonsByWeaknessesOne()
+print("Weaknesses One:")
+print(pokemons)
+writeAJson(pokemons, "WeaknessesOne")
+
