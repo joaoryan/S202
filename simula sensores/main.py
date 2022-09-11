@@ -1,5 +1,7 @@
 import pprint
-s
+import time
+import threading
+
 from pymongo import MongoClient
 
 # variavel que recebe conexao com mongoDB
