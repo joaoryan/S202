@@ -14,12 +14,11 @@ db = client['bancoiot']
 # variavel que recebe uma conexao com uma Collection
 sensores = db.sensores
 
-# variavel que recebe os documentos
 result = sensores.find({})
 
 for c in result:
-    pprint.pprint('--------------------')
-    pprint.pprint(c)
+     pprint.pprint('--------------------')
+     pprint.pprint(c)
 
 
 def sensor1():
@@ -27,8 +26,12 @@ def sensor1():
         temp = random.randint(30, 40)
         print('Temperatura sensor 1: ', temp)
         time.sleep(2)
+        sensores.update_one(
+            {"nomeSensor": "Temp1"},
+            {"$set": {"valorSensor": temp}}
+        )
         if temp > 38:
-            print('Atenção! Temperatura muito alta! Verificar Sensor 1!')
+            print('Atenção! Temperatura muito alta! Verificar Sensor Temp1!')
             break
 
 
@@ -41,8 +44,12 @@ def sensor2():
         temp = random.randint(30, 40)
         print('Temperatura sensor 2: ', temp)
         time.sleep(3)
+        sensores.update_one(
+            {"nomeSensor": "Temp2"},
+            {"$set": {"valorSensor": temp}}
+        )
         if temp > 38:
-            print('Atenção! Temperatura muito alta! Verificar Sensor 2!')
+            print('Atenção! Temperatura muito alta! Verificar Sensor Temp2!')
             break
 
 
@@ -55,10 +62,15 @@ def sensor3():
         temp = random.randint(30, 40)
         print('Temperatura sensor 3: ', temp)
         time.sleep(4)
+        sensores.update_one(
+            {"nomeSensor": "Temp3"},
+            {"$set": {"valorSensor": temp}}
+        )
         if temp > 38:
-            print('Atenção! Temperatura muito alta! Verificar Sensor 3!')
+            print('Atenção! Temperatura muito alta! Verificar Sensor Temp3!')
             break
 
 
-x = threading.Thread(target=sensor3, args=())
+x = threading.Thread(target=sensor3)
 x.start()
+
