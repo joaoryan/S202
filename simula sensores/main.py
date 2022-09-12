@@ -73,4 +73,3 @@ def sensor3():
 
 x = threading.Thread(target=sensor3)
 x.start()
-
